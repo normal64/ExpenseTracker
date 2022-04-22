@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import YourBalance from "./components/YourBalance";
+import NewTransaction from "./components/NewTransaction";
+import TransactionHistory from "./components/TransactionHistory";
+import { connect } from "react-redux";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => {
+    // const  gradient = {background-image: "linear-gradient(to right, #2c3e50, #4ca1af)"};
+    document.body.style.backgroundImage = "linear-gradient(to right, #2c3e50, #4ca1af)";
+    return <div>
+            <YourBalance />
+            <NewTransaction />
+            <TransactionHistory />
     </div>
-  );
+
+}
+const mapStateToProps = (state) => {
+    return {
+        pokeDataResponse: state.expenseReducer,
+
+    }
 }
 
-export default App;
+export default  connect(mapStateToProps,{})(App);

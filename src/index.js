@@ -1,17 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { createRoot } from "react-dom/client";
+import thunk from "redux-thunk";
+import {Provider} from "react-redux";
+import { createStore } from "redux";
+import { applyMiddleware } from "redux";
+import reducers from "./reducers";
+import App from "./App";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+export const store = createStore(reducers, applyMiddleware(thunk));
+
+// const  gradient = {background-image: "linear-gradient(to right, #2c3e50, #4ca1af)"};
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <Provider store={store}  >
+    <App  />
+    </Provider>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

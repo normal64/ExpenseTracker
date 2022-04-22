@@ -1,0 +1,13 @@
+.transaction-history{
+    padding-top: 1rem   !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+    display: flex;
+    
+    
+}
+
+.transaction-history-element{
+    align-self: center !important;
+    
+}
